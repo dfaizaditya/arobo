@@ -1,0 +1,21 @@
+roslaunch arobo turtlebot3_world.launch
+roslaunch arobo turtlebot3_empty_world.launch
+
+roslaunch arobo turtlebot3_slam.launch slam_methods:=gmapping
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+roslaunch ros_autonomous_slam autonomous_explorer.launch
+roslaunch ros_autonomous_slam autonomous_explorer.launch explorer:=RRT
+roslaunch ros_autonomous_slam autonomous_explorer.launch explorer:=BUG_WALLFOLLOW
+roslaunch arobo rrt_simple.launch
+rosrun map_server map_saver -f my_map
+
+roslaunch arobo turtlebot3_navigation.launch
+
+
+
+
+https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#tuning-guide
+
+rosrun turtlebot3_example turtlebot3_server
+rosrun ros_autonomous_slam autonomous_rrt.py
